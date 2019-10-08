@@ -12,9 +12,10 @@
  */
 package cse250.pa2
 
-import cse250.objects.TaxEntry
+import cse250.objects.{DNode, TaxEntry}
 
 import scala.collection.mutable
+import scala.collection.mutable.ArrayBuffer
 
 object Main {
   def loadEntries(filename: String, numToLoad: Int) = {
@@ -62,16 +63,23 @@ object Main {
     val taxEntryStore = new GroupByStore
     val filename = "data/2017-2018_Assessment_Roll-updated-small.csv"
 
-    var numLines = 25
+    var numLines = 4
     for (entry <- loadEntries(filename, numLines)) {
       taxEntryStore.insert(entry)
     }
+
+
+
+
     println(s"Storage after $numLines additions:")
     println("-----")
+//    for(i <- taxEntryStore.groupings){
+//      println(i.value.infoMap)
+//    }
     println(taxEntryStore)
     println("-----")
 
-    taxEntryStore.regroup("NEIGHBORHOOD")
+    //taxEntryStore.regroup("NEIGHBORHOOD")
 
     println(s"Storage after regrouping by NEIGHBORHOOD:")
     println("-----")

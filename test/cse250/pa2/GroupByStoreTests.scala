@@ -51,7 +51,7 @@ class GroupByStoreTests extends FlatSpec with BeforeAndAfter {
 
   val smallFilename = "data/2017-2018_Assessment_Roll-updated-small.csv"
   val largeFilename = "data/2017-2018_Assessment_Roll-updated.csv"
-  val maxCapacitySmallFile = 25
+  val maxCapacitySmallFile = 4
   var dataStore: GroupByStore = _
 
 
@@ -76,7 +76,7 @@ class GroupByStoreTests extends FlatSpec with BeforeAndAfter {
   it should "retrieve all stored entries" in {
     val entries = loadEntries(smallFilename, maxCapacitySmallFile)
     val testEntriesSet = new mutable.HashSet[TaxEntry]
-    
+
     // Add all loaded values into your dataStore.
     for (i <- 0 until entries.length) {
       dataStore.insert(entries(i))
